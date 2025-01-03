@@ -6,13 +6,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TableComponent } from './components/table/table.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { ToastComponent } from './components/toast/toast.component';
 import { DxSchedulerModule, DxDataGridModule, DxTemplateModule, DxBulletModule, DxToastModule } from 'devextreme-angular';
 import { ReservationsRoutingModule } from '../features/reservations/reservations-routing.module';
 import { FormReservationsComponent } from './components/forms/form-reservations/form-reservations.component';
 
 @NgModule({
-  declarations: [TableComponent, CalendarComponent, NavbarComponent, ToastComponent, FormReservationsComponent],
+  declarations: [TableComponent, CalendarComponent, NavbarComponent, FormReservationsComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -28,7 +27,6 @@ import { FormReservationsComponent } from './components/forms/form-reservations/
     TableComponent,
     CalendarComponent,
     NavbarComponent,
-    ToastComponent,
     FormReservationsComponent
   ],
 })

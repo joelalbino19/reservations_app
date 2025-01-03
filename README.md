@@ -52,7 +52,11 @@ El backend está desarrollado con .NET Core 8 utilizando una arquitectura modula
    ```bash
    ng serve
    ```
-5. Accede a la aplicación desde el navegador en:
+5. Ejecuta la aplicación testing:
+   ```bash
+   ng test
+   ```
+6. Accede a la aplicación desde el navegador en:
    ```
    http://localhost:4200
    ```

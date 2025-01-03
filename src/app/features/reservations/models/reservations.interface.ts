@@ -1,5 +1,5 @@
 export interface IReservation {
-  id?: string;
+  id: string;
   spaceName: string;
   userName: string;
   startDate: string;

@@ -1,0 +1,78 @@
+<div class="flex flex-col gap-6 items-center justify-center h-screen bg-gray-100">
+  <div *ngIf="errorMessage !== ''" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded flex gap-2"
+    role="alert">
+    <strong class="font-bold">Error!</strong>
+    <span class="block sm:inline">{{ errorMessage }}</span>
+    <span>
+      <svg (click)="errorMessage = ''" class="fill-current h-6 w-6 text-red-500" role="button"
+        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+        <title>Close</title>
+        <path fill-rule="evenodd"
+          d="M14.95 5.05a.75.75 0 0 1 1.06 1.06L11.06 10l4.95 4.95a.75.75 0 1 1-1.06 1.06L10 11.06l-4.95 4.95a.75.75 0 0 1-1.06-1.06L8.94 10 4.99 5.05a.75.75 0 0 1 1.06-1.06L10 8.94l4.95-4.95z">
+        </path>
+      </svg>
+    </span>
+
+  </div>
+  <div class="max-w-md w-full p-6 bg-white rounded-lg shadow-lg">
+    <h2 class="text-2xl font-semibold text-center mb-4">{{ isEditMode ? 'Editar Reservación' : 'Registrar Reservación'
+      }}</h2>
+    <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
+
+      <div class="mb-4">
+        <label for="userName" class="block text-sm font-medium text-gray-700">Usuarios</label>
+        <select id="userName" formControlName="userId" [value]="0"
+          class="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white">
+          <option value="0" disabled selected>Seleccione un usuario</option>
+          <option *ngFor="let user of users" [value]="user.id">{{ user.name }}</option>
+        </select>
+        <div *ngIf="userName?.invalid && userName?.touched" class="text-red-500 text-sm mt-2">
+          Usuario es requerido
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <label for="spaceName" class="block text-sm font-medium text-gray-700">Espacios</label>
+        <select id="spaceName" formControlName="spaceId" [value]="0"
+          class="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white">
+          <option value="0" disabled selected>Seleccione un espacio</option>
+          <option *ngFor="let space of spaces" [value]="space.id">{{ space.name }}</option>
+        </select>
+        <div *ngIf="spaceName?.invalid && spaceName?.touched" class="text-red-500 text-sm mt-2">
+          Espacio es requerido
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <label for="startDate" class="block text-sm font-medium text-gray-700">Fecha de Inicio</label>
+        <input id="startDate" type="date" formControlName="startDate" placeholder="Seleccione la fecha de inicio"
+          class="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400" />
+        <div *ngIf="startDate?.invalid && startDate?.touched" class="text-red-500 text-sm mt-2">
+          Fecha de inicio es requerida
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <label for="endDate" class="block text-sm font-medium text-gray-700">Fecha Final</label>
+        <input id="endDate" type="date" formControlName="endDate" placeholder="Seleccione la fecha final"
+          class="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400" />
+        <div *ngIf="endDate?.invalid && endDate?.touched" class="text-red-500 text-sm mt-2">
+          Fecha final es requerida
+        </div>
+      </div>
+
+      <div class="flex justify-between mt-6">
+        <button type="submit" [disabled]="reservationForm.invalid"
+          class="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 w-full">{{ isEditMode ? 'Guardar Cambios' :
+          'Registrar Reserva' }}</button>
+      </div>
+    </form>
+
+    <div class="flex justify-between mt-4">
+      <button (click)="onBack()" class="bg-gray-300 text-black p-2 rounded-md hover:bg-gray-400 w-full">
+        Volver a la Lista
+      </button>
+    </div>
+
+  </div>
+</div>

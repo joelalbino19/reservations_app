@@ -1,0 +1,44 @@
+<div class="flex items-center justify-center h-screen bg-gray-100">
+    <div class="max-w-md w-full p-6 bg-white rounded-lg shadow-lg">
+      <h2 class="text-2xl font-semibold text-center mb-4">{{ isEditMode ? 'Editar Espacio' : 'Registrar Espacio' }}</h2>
+      <form [formGroup]="spaceForm" (ngSubmit)="onSubmit()">
+        <div class="mb-4">
+          <label for="name" class="block text-sm font-medium text-gray-700">Nombre</label>
+          <input id="name" type="text" formControlName="name" placeholder="Nombre del espacio"
+            class="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400" />
+          <div *ngIf="spaceForm.get('name')?.invalid && spaceForm.get('name')?.touched" class="text-red-500 text-sm mt-2">
+            Nombre es requerido
+          </div>
+        </div>
+  
+        <div class="mb-4">
+          <label for="capacity" class="block text-sm font-medium text-gray-700">Capacidad</label>
+          <input id="capacity" type="number" formControlName="capacity" placeholder="Capacidad del espacio"
+            class="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400" />
+          <div *ngIf="spaceForm.get('capacity')?.invalid && spaceForm.get('capacity')?.touched" class="text-red-500 text-sm mt-2">
+            Capacidad es requerida
+          </div>
+        </div>
+  
+        <div class="mb-4">
+          <label for="location" class="block text-sm font-medium text-gray-700">Ubicación</label>
+          <input id="location" type="text" formControlName="location" placeholder="Ubicación"
+            class="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400" />
+          <div *ngIf="spaceForm.get('location')?.invalid && spaceForm.get('location')?.touched" class="text-red-500 text-sm mt-2">
+            Ubicación es requerida
+          </div>
+        </div>
+  
+        <div class="flex justify-between mt-6">
+          <button type="submit" [disabled]="spaceForm.invalid"
+            class="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 w-full">{{ isEditMode ? 'Guardar Cambios' : 'Registrar Espacio' }}</button>
+        </div>
+
+        <div class="flex justify-between mt-4">
+          <button (click)="onBack()" class="bg-gray-300 text-black p-2 rounded-md hover:bg-gray-400 w-full">
+            Volver a la Lista
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>

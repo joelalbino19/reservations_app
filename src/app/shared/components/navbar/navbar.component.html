@@ -1,25 +1,19 @@
-<!-- navbar.component.html -->
 <div class="bg-blue-500 p-4">
   <nav class="flex justify-between items-center">
-    <!-- Logo o nombre de la aplicación -->
     <div class="text-white font-bold text-lg">Reservaciones</div>
 
-    <!-- Enlaces transformados en botones -->
     <div class="space-x-4">
-      <!-- Botón Inicio -->
       <button (click)="navigateHome()" class="px-4 py-2 text-white rounded hover:bg-blue-600 focus:outline-none">
         Inicio
       </button>
 
-      <!-- Botón Espacios -->
-      <!-- <button (click)="navigateSpaces()" class="px-4 py-2 text-white rounded hover:bg-blue-600 focus:outline-none">
+      <button (click)="navigateSpaces()" class="px-4 py-2 text-white rounded hover:bg-blue-600 focus:outline-none">
         Espacios
-      </button> -->
+      </button>
       <button (click)="navigateReservations()" class="px-4 py-2 text-white rounded hover:bg-blue-600 focus:outline-none">
         Reservaciones
       </button>
 
-      <!-- Botón Cerrar Sesión -->
       <button (click)="logout()" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 focus:outline-none">
         Cerrar Sesión
       </button>

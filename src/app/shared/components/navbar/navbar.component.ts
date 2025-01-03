@@ -1,4 +1,3 @@
-// navbar.component.ts
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -9,12 +8,15 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent {
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   navigateHome() {
     this.router.navigate(['/home']);
   }
 
+  navigateSpaces() {
+    this.router.navigate(['/spaces']);
+  }
   navigateReservations() {
     this.router.navigate(['/reservations']);
   }

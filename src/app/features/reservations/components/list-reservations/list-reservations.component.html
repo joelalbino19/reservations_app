@@ -21,7 +21,7 @@
   </div>
 </div>
 <div class="container mx-auto p-4" *ngIf="!changeView">
-  <app-table [dataSource]="reservations" [dataSourceColumn]="reservationsColumn"></app-table>
+  <app-table [dataSource]="reservations" [dataSourceColumn]="reservationsColumn" [param]="'reservations'"></app-table>
 </div>
 <div class="container mx-auto p-4" *ngIf="changeView">  
   <app-calendar [dataSource]="reservations"></app-calendar>

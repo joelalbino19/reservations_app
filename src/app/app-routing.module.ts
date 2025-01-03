@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './core/guards/auth.guard'; // Guard para verificar autenticación
+import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
     redirectTo: 'login',
-    pathMatch: 'full' // Redirecciona a la página de login si no hay otra ruta
+    pathMatch: 'full'
   },
   {
-    path: 'login', // Ruta para el login
+    path: 'login',
     loadChildren: () =>
       import('./features/login/login.module').then(m => m.LoginModule)
   },
   {
-    path: 'register', // Ruta para el login
+    path: 'register',
     loadChildren: () =>
       import('./features/register/register.module').then(m => m.RegisterModule)
   },
@@ -25,13 +25,19 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'reservations', // Rutas protegidas: solo accesibles si el usuario está autenticado
+    path: 'spaces',
+    loadChildren: () =>
+      import('./features/spaces/spaces.module').then(m => m.SpacesModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'reservations',
     loadChildren: () =>
       import('./features/reservations/reservations.module').then(m => m.ReservationsModule),
     canActivate: [AuthGuard]
   },
   {
-    path: '**', // Ruta para manejar rutas no encontradas
+    path: '**',
     redirectTo: 'login'
   }
 ];
